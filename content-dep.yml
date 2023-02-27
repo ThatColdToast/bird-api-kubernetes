@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: content-dep
+spec:
+  selector:
+    matchLabels:
+      app: content-dep
+  template:
+    metadata:
+      labels:
+        app: content-dep
+    spec:
+      containers:
+      - name: content-dep
+        image: thatcoldtoast/bird-api-content
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 443

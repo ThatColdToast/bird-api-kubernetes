@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: upload
+spec:
+  selector:
+    matchLabels:
+      app: upload
+  template:
+    metadata:
+      labels:
+        app: upload
+    spec:
+      containers:
+      - name: upload
+        image: thatcoldtoast/bird-api-image-upload
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 443

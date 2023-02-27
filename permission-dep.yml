@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: permissions
+spec:
+  selector:
+    matchLabels:
+      app: permissions
+  template:
+    metadata:
+      labels:
+        app: permissions
+    spec:
+      containers:
+      - name: permissions
+        image: thatcoldtoast/bird-api-permission
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5672

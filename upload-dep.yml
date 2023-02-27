@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: upload
+  name: upload-dep
 spec:
   selector:
     matchLabels:
-      app: upload
+      app: upload-dep
   template:
     metadata:
       labels:
-        app: upload
+        app: upload-dep
     spec:
       containers:
-      - name: upload
+      - name: upload-dep
         image: thatcoldtoast/bird-api-image-upload
         resources:
           limits:

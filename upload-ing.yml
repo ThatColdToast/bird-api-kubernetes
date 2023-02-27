@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: upload-ing
+  labels:
+    name: upload-ing
+spec:
+  rules:
+  - host: upload.birdsocial.app
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: upload-srv
+            port: 
+              number: 443

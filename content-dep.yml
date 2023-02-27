@@ -20,3 +20,20 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 443
+        env:
+        - name: NEO4J_URI
+          valueFrom:
+            secretKeyRef:
+              key: neo4j_uri
+        - name: NEO4J_PORT
+          valueFrom:
+            secretKeyRef:
+              key: neo4j_port
+        - name: NEO4J_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: neo4j_username
+        - name: NEO4J_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: neo4j_password

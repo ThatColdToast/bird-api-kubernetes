@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: content-srv
+spec:
+  selector:
+    app: content-dep
+  ports:
+  - port: 443
+    targetPort: 443

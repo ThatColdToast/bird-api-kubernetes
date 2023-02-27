@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: permissions
+  name: permission-dep
 spec:
   selector:
     matchLabels:
-      app: permissions
+      app: permission-dep
   template:
     metadata:
       labels:
-        app: permissions
+        app: permission-dep
     spec:
       containers:
-      - name: permissions
+      - name: permission-dep
         image: thatcoldtoast/bird-api-permission
         resources:
           limits:

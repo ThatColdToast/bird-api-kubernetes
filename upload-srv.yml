@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: upload-srv
+spec:
+  selector:
+    app: upload-dep
+  ports:
+  - port: 443
+    targetPort: 443

@@ -16,7 +16,7 @@ spec:
         image: thatcoldtoast/bird-api-content:0.0.4
         resources:
           limits:
-            memory: "128Mi"
+            memory: "2Gi"
             cpu: "500m"
         ports:
         - containerPort: 8080
@@ -24,44 +24,60 @@ spec:
         - name: NEO4J_URI
           valueFrom:
             secretKeyRef:
+              name: neo4j-secret
               key: neo4j_uri
         - name: NEO4J_USERNAME
           valueFrom:
             secretKeyRef:
+              name: neo4j-secret
               key: neo4j_username
         - name: NEO4J_PASSWORD
           valueFrom:
             secretKeyRef:
-              key: neo4j_password
-        - name: BCRYPT_LOG_ROUNDS
-          valueFrom:
-            secretKeyRef:
+              name: neo4j-secret
               key: neo4j_password
         - name: JWT_ACCESS_SECRET
           valueFrom:
             secretKeyRef:
+              name: jwt-secret
               key: jwt_access_secret
         - name: JWT_REFRESH_SECRET
           valueFrom:
             secretKeyRef:
+              name: jwt-secret
               key: jwt_refresh_secret
-        - name: ENVIRONMENT
-          valueFrom:
-            secretKeyRef:
-              key: environment
         - name: SENTRY_DSN
           valueFrom:
             secretKeyRef:
+              name: sentry-secret
               key: sentry_dsn
         - name: R2_URL
           valueFrom:
             secretKeyRef:
+              name: s3-secret
               key: r2_url
         - name: R2_SECRET
           valueFrom:
             secretKeyRef:
+              name: s3-secret
               key: r2_secret
         - name: R2_BUCKET_ID
           valueFrom:
             secretKeyRef:
+              name: s3-secret
               key: r2_bucket_id
+        - name: ENVIRONMENT
+          valueFrom:
+            configMapKeyRef:
+              name: application-config
+              key: environment
+        - name: BCRYPT_LOG_ROUNDS
+          valueFrom:
+            configMapKeyRef:
+              name: application-config
+              key: bcrypt_log_rounds
+        - name: PERMISSION_RABBITMQ_QUEUE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: permission-rabbitmq-config
+              key: permission_rabbitmq_queue_name

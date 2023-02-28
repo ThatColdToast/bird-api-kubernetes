@@ -6,7 +6,7 @@ metadata:
     name: content-ing
 spec:
   rules:
-  - host: api.birdsocial.app
+  - host: devapi.birdsocial.app
     http:
       paths:
       - pathType: Prefix

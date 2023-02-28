@@ -18,15 +18,24 @@ spec:
         image: redis:7.0.8
         ports:
         - containerPort: 6379
-          name: web
+          name: redis_port
         volumeMounts:
-        - name: www
-          mountPath: /usr/share/nginx/html
+        - name: data
+          mountPath: /data
+        env:
+        - name: REDIS_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: permission_redis_username
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: permission_redis_password
   volumeClaimTemplates:
   - metadata:
-      name: www
+      name: data
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: [ "ReadWriteMany" ]
       resources:
         requests:
           storage: 1Gi

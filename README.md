@@ -11,11 +11,11 @@ metadata:
   name: jwt-secrets
 type: Opaque
 data:
-  access_secret: <secret>
-  refresh_secret: <secret>
+  jwt_access_secret: <secret>
+  jwt_refresh_secret: <secret>
 ```
 
-`/permission/redis/secret.yml`:
+`/permission-redis-secret.yml`:
 
 ```
 apiVersion: v1
@@ -24,9 +24,8 @@ metadata:
   name: permission-redis-secrets
 type: Opaque
 data:
-  username: <username>
-  password: <password>
-  port: "6379"
+  permission_redis_username: <username>
+  permission_redis_password: <password>
 ```
 
 `/neo4j-secrets.yml`:
@@ -38,9 +37,22 @@ metadata:
   name: neo4j-secret
 type: Opaque
 data:
-  neo4j_uri: neo4j+s://link-to-neo4j-db
-  neo4j_port: "7687"
+  neo4j_uri: <neo4j+s://url-to-neo4j-db>
   neo4j_username: <neo4j>
   neo4j_password: <password>
 
+```
+
+`/r2-secrets.yml`
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: s3-secret
+type: Opaque
+data:
+  r2_url: <https://r2.cloudflarestorage.com/bucket-name>
+  r2_secret: <secret>
+  r2_bucket_id: <bucket-id>
 ```

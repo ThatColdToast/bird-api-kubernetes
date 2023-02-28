@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: content-dep
-        image: thatcoldtoast/bird-api-content
+        image: thatcoldtoast/bird-api-content:0.0.4
         resources:
           limits:
             memory: "128Mi"
@@ -25,10 +25,6 @@ spec:
           valueFrom:
             secretKeyRef:
               key: neo4j_uri
-        - name: NEO4J_PORT
-          valueFrom:
-            secretKeyRef:
-              key: neo4j_port
         - name: NEO4J_USERNAME
           valueFrom:
             secretKeyRef:
@@ -37,3 +33,35 @@ spec:
           valueFrom:
             secretKeyRef:
               key: neo4j_password
+        - name: BCRYPT_LOG_ROUNDS
+          valueFrom:
+            secretKeyRef:
+              key: neo4j_password
+        - name: JWT_ACCESS_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: jwt_access_secret
+        - name: JWT_REFRESH_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: jwt_refresh_secret
+        - name: ENVIRONMENT
+          valueFrom:
+            secretKeyRef:
+              key: environment
+        - name: SENTRY_DSN
+          valueFrom:
+            secretKeyRef:
+              key: sentry_dsn
+        - name: R2_URL
+          valueFrom:
+            secretKeyRef:
+              key: r2_url
+        - name: R2_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: r2_secret
+        - name: R2_BUCKET_ID
+          valueFrom:
+            secretKeyRef:
+              key: r2_bucket_id

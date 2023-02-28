@@ -4,3 +4,4 @@ metadata:
   name: permission-config
 data:
   queue: perms_request
+  port: "5672"

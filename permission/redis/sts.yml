@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: permission-redis-sts
+spec:
+  selector:
+    matchLabels:
+      app: permission-redis-dep
+  serviceName: permission-redis
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: permission-redis-dep
+    spec:
+      containers:
+      - name: permission-redis-dep
+        image: redis:7.0.8
+        ports:
+        - containerPort: 6379
+          name: web
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi

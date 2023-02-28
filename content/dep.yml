@@ -19,7 +19,7 @@ spec:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 443
+        - containerPort: 8080
         env:
         - name: NEO4J_URI
           valueFrom:

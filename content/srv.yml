@@ -7,4 +7,4 @@ spec:
     app: content-dep
   ports:
   - port: 443
-    targetPort: 443
+    targetPort: 8080

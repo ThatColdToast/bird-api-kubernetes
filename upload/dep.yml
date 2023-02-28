@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: upload-dep
-        image: thatcoldtoast/bird-api-image-upload
+        image: thatcoldtoast/bird-api-upload
         resources:
           limits:
             memory: "128Mi"

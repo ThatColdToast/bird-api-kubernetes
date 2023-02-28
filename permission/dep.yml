@@ -13,10 +13,51 @@ spec:
     spec:
       containers:
       - name: permission-dep
-        image: thatcoldtoast/bird-api-permission
+        image: thatcoldtoast/bird-api-perms:0.0.1
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
         - containerPort: 5672
+        env:
+        - name: NEO4J_URI
+          valueFrom:
+            secretKeyRef:
+              name: neo4j-secret
+              key: neo4j_uri
+        - name: NEO4J_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: neo4j-secret
+              key: neo4j_username
+        - name: NEO4J_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: neo4j-secret
+              key: neo4j_password
+        - name: PERMISSION_RABBITMQ_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: permission-rabbitmq-secret
+              key: permission_rabbitmq_username
+        - name: PERMISSION_RABBITMQ_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: permission-rabbitmq-secret
+              key: permission_rabbitmq_password
+        - name: PERMISSION_RABBITMQ_QUEUE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: permission-rabbitmq-config
+              key: permission_rabbitmq_queue_name
+        - name: PERMISSION_REDIS_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: permission-redis-secret
+              key: permission_redis_username
+        - name: PERMISSION_REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: permission-redis-secret
+              key: permission_redis_password

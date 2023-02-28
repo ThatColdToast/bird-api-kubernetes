@@ -40,7 +40,6 @@ data:
   neo4j_uri: <neo4j+s://url-to-neo4j-db>
   neo4j_username: <neo4j>
   neo4j_password: <password>
-
 ```
 
 `/r2-secrets.yml`
@@ -55,4 +54,16 @@ data:
   r2_url: <https://r2.cloudflarestorage.com/bucket-name>
   r2_secret: <secret>
   r2_bucket_id: <bucket-id>
+```
+
+`/sentry-secrets.yml`
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sentry-secret
+type: Opaque
+data:
+  sentry_dsn: <https://id.ingest.sentry.io/something>
 ```

@@ -13,6 +13,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: content-srv
+            name: content-svc
             port: 
               number: 443

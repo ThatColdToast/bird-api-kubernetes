@@ -13,6 +13,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: upload-srv
+            name: upload-svc
             port: 
               number: 443

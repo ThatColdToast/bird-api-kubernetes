@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: permission-dep
-        image: thatcoldtoast/bird-api-perms:0.0.1
+        image: thatcoldtoast/bird-api-perms:0.0.6
         resources:
           limits:
             memory: "128Mi"
